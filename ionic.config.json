@@ -1,0 +1,7 @@
+{
+  "name": "stock-crickz-betting",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
