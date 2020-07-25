@@ -1,21 +1,28 @@
-import React from "react";
-import {
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonIcon,
-  IonLabel,
-  IonBadge,
-  IonRouterOutlet,
-} from "@ionic/react";
-import { Redirect, Route } from "react-router-dom";
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import React from 'react';
+import { menuController } from '@ionic/core';
 
-import { calendar, personCircle, map, informationCircle } from "ionicons/icons";
 
-const Betting: React.FC = () => (
-  <div>
-      Hi This is Betting page
-  </div>
-);
+const Betting: React.FC = () => {
+  menuController.enable(true);
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>Open Bets</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent>
+        <h2>
+          Open Bets Page
+        </h2>  
+      </IonContent>
+    </IonPage>
+  );
+};
 
 export default Betting;

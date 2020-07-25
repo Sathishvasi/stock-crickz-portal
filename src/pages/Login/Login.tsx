@@ -24,6 +24,8 @@ import Container from "@material-ui/core/Container";
 import logo from "../../assets/logo.png";
 import { colorFill } from "ionicons/icons";
 import { useEffect, useState, useRef } from "react";
+import { menuController } from '@ionic/core';
+
 
 function Copyright() {
   return (
@@ -120,6 +122,9 @@ const Login: React.FC = () => {
       func2(!errorPwd);
     }
   };
+
+  //Disabling Menu specifically in login page
+  menuController.enable(false);
 
   return (
     <IonPage>
