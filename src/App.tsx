@@ -8,8 +8,9 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
-  IonSplitPane
+  IonSplitPane,
 } from "@ionic/react";
+import Container from "@material-ui/core/Container";
 import { IonReactRouter } from "@ionic/react-router";
 import Login from "./pages/Login/Login";
 
@@ -17,7 +18,7 @@ import Betting from "./pages/Betting/Betting";
 import BettingPL from "./pages/BettingPL/BettingPL";
 
 import Menu from "./components/Menu/Menu";
-
+import Navbar from "./components/Navbar/Navbar"
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -39,11 +40,13 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import "./styles/appStyles.scss";
 
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonSplitPane contentId="main">
         <Menu />
+        <Container>
         <IonRouterOutlet id="main">
           <Route path="/menu" component={Betting} exact />
           <Route path="/menu/betting" component={BettingPL} exact />
@@ -52,6 +55,7 @@ const App: React.FC = () => (
           <Route path="/" render={() => <Redirect to="/login" />}exact={true}/>
           {/* <Redirect from="/" to="/menu/page1" exact /> */}
         </IonRouterOutlet>
+        </Container>
       </IonSplitPane>
     </IonReactRouter>
   </IonApp>

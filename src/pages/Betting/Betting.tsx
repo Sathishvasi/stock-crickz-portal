@@ -1,25 +1,26 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
-import { menuController } from '@ionic/core';
-
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import React from "react";
+import { menuController } from "@ionic/core";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Betting: React.FC = () => {
   menuController.enable(true);
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Open Bets</IonTitle>
-        </IonToolbar>
+        <Navbar />
       </IonHeader>
 
-      <IonContent>
-        <h2>
-          Open Bets Page
-        </h2>  
+      <IonContent className="bg">
+        <h2>Open Bets Page</h2>
       </IonContent>
     </IonPage>
   );

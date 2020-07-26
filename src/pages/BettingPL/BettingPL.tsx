@@ -7,18 +7,14 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import Navbar from "../../components/Navbar/Navbar";
 import React from "react";
 
 const BettingPL: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Betting P&L</IonTitle>
-        </IonToolbar>
+        <Navbar />
       </IonHeader>
 
       <IonContent>

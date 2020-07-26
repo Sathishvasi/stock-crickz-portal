@@ -25,6 +25,8 @@ import {
 
 import { menuController } from "@ionic/core";
 
+import verticalLogo from '../../assets/logo-vertical.png'
+
 interface AppPage {
   url: string;
   iosIcon: string;
@@ -93,7 +95,8 @@ const Menu: React.FC = () => {
 
       <IonContent>
         <IonList id="labels-list">
-          <IonListHeader className="menu-header">Stock Crickz</IonListHeader>
+          {/* <IonListHeader className="menu-header">Stock Crickz</IonListHeader> */}
+          <img className="menu-header" src={verticalLogo} alt="logo"/>
           {/* <IonNote>Bet your fav team</IonNote> */}
           <IonListHeader>
             <IonIcon
@@ -106,7 +109,7 @@ const Menu: React.FC = () => {
           {labels.map((val, index) => (
             <IonItem lines="none" key={index}>
               <IonLabel>{val.title}</IonLabel>
-              <IonLabel>{val.value}</IonLabel>
+              <IonLabel className="money-value">{val.value}</IonLabel>
             </IonItem>
           ))}
         </IonList>

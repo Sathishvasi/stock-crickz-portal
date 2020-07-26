@@ -24,8 +24,10 @@ import Container from "@material-ui/core/Container";
 import logo from "../../assets/logo.png";
 import { colorFill } from "ionicons/icons";
 import { useEffect, useState, useRef } from "react";
-import { menuController } from '@ionic/core';
+import { menuController } from "@ionic/core";
 
+import { connect } from "react-redux";
+import state from "../../store";
 
 function Copyright() {
   return (
@@ -71,7 +73,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function mapStateToProps(state: any) {
+  return state;
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return dispatch({ type: "", value: "" });
+}
+
 const Login: React.FC = () => {
+  let activeTestUrl = state.getState().demo;
+  console.log(activeTestUrl);
+
   const history = useHistory();
   const classes = useStyles();
 
@@ -99,6 +112,11 @@ const Login: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   const checkValidation = () => {
+    state.dispatch({ type: "SET_VAL", value: "kumar" });
+
+    let activeTestUrl2 = state.getState().demo;
+    console.log(activeTestUrl2);
+
     uname = un.current?.value;
     upwd = pwd.current?.value;
     errorUn =
@@ -111,11 +129,12 @@ const Login: React.FC = () => {
       func2(typeof errorPwd === "boolean" && errorPwd);
       if (uname === "sathish" && upwd === "123") {
         history.push("/menu");
+        window.location.reload();
       } else {
         setOpen(true);
-        setTimeout(()=>{
-            setOpen(false);
-        },2000)
+        setTimeout(() => {
+          setOpen(false);
+        }, 2000);
       }
     } else {
       func1(!errorUn);
@@ -215,4 +234,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
