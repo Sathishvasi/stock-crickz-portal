@@ -17,17 +17,17 @@
   .balance {
     right: 16px;
     position: absolute;
-    height: 50px;
     background-color: #304875;
     flex-direction: column;
     border-radius: 5px;
-    padding: 3px 15px;
+    padding: 5px 15px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     p {
       margin: 0;
       font-size: 14px;
+      margin-top: 3px;
     }
   }
 }

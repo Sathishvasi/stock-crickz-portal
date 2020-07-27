@@ -16,9 +16,15 @@ import Login from "./pages/Login/Login";
 
 import Betting from "./pages/Betting/Betting";
 import BettingPL from "./pages/BettingPL/BettingPL";
+import Matches from "./pages/Matches/Matches";
+import Password from "./pages/Password/Password";
+import Statement from "./pages/Statement/Statement";
+import MatchDetail from "./pages/MatchDetail/MatchDetail";
+
 
 import Menu from "./components/Menu/Menu";
-import Navbar from "./components/Navbar/Navbar"
+import Navbar from "./components/Navbar/Navbar";
+
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -48,8 +54,12 @@ const App: React.FC = () => (
         <Menu />
         <Container>
         <IonRouterOutlet id="main">
-          <Route path="/menu" component={Betting} exact />
-          <Route path="/menu/betting" component={BettingPL} exact />
+          <Route path="/menu" component={Matches} exact />
+          <Route path="/menu/details" component={MatchDetail} exact />
+          <Route path="/menu/betting" component={Betting} exact />
+          <Route path="/menu/bettingpl" component={BettingPL} exact />
+          <Route path="/menu/statement" component={Statement} exact />
+          <Route path="/menu/password" component={Password} exact />
           <Route path="/login" component={Login} exact={true} />
           {/* <Route path="/menu" component={MenuItems} exact={true} /> */}
           <Route path="/" render={() => <Redirect to="/login" />}exact={true}/>

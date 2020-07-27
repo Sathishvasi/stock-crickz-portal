@@ -4,7 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton";  
 import {
   IonButtons,
   IonContent,
@@ -16,9 +16,12 @@ import {
   IonIcon,
 } from "@ionic/react";
 import verticalLogo from "../../assets/logo-name.png";
-import { personSharp } from "ionicons/icons";
+import { personSharp, menuSharp } from "ionicons/icons";
 import { connect } from "react-redux";
 import state from "../../store";
+
+import "../../styles/appStyles.scss";
+
 
 function mapStateToProps(state: any) {
   return state;
@@ -45,19 +48,13 @@ const Navbar: React.FC = () => {
   const balance = state.getState().availableBalance;
 
   return (
+    <IonHeader>
     <div className={classes.navRoot}>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          > */}
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          {/* </IconButton> */}
           <div className="logo-name">
             <h3>Stock Crickz</h3>
           </div>
@@ -68,6 +65,7 @@ const Navbar: React.FC = () => {
         </Toolbar>
       </AppBar>
     </div>
+    </IonHeader>
   );
 };
 

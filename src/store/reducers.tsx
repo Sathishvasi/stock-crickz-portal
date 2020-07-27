@@ -1,6 +1,7 @@
 const initialState = {
   demo: "sathish",
-  availableBalance: 5000
+  availableBalance: 5000,
+  matchHeading: ''
 };
 
 function rootReducer(state = initialState, action: any) {
@@ -10,6 +11,11 @@ function rootReducer(state = initialState, action: any) {
         ...state,
         demo: action.value,
       };
+    case "SET_MATCHNAME":
+      return{
+        ...state,
+        matchHeading: action.value
+      }
     default:
       return state;
   }

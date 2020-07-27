@@ -1,0 +1,18 @@
+.bettingWrapper {
+  .MuiAccordion-root {
+    margin-bottom: 20px;
+  }
+
+  .MuiAccordionSummary-root, .MuiIconButton-label {
+    background: #253a61;
+    color: white;
+  }
+
+  .MuiAccordionSummary-root.Mui-expanded{
+      min-height: 48px !important;
+  }
+
+  .MuiAccordionSummary-content.Mui-expanded{
+      margin: 12px 0 !important;
+  }
+}

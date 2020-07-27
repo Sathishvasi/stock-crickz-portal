@@ -21,11 +21,12 @@ import {
   settingsSharp,
   logOutSharp,
   listCircleSharp,
+  playCircleSharp
 } from "ionicons/icons";
 
 import { menuController } from "@ionic/core";
 
-import verticalLogo from '../../assets/logo-vertical.png'
+import verticalLogo from '../../assets/logo-vertical.png';
 
 interface AppPage {
   url: string;
@@ -36,20 +37,26 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: "Open Bets",
+    title: "Matches",
     url: "/menu",
+    iosIcon: playCircleSharp,
+    mdIcon: playCircleSharp,
+  },
+  {
+    title: "Open Bets",
+    url: "/menu/betting",
     iosIcon: listCircleSharp,
     mdIcon: listCircleSharp,
   },
   {
     title: "Betting P&L",
-    url: "/menu/betting",
+    url: "/menu/bettingpl",
     iosIcon: cardSharp,
     mdIcon: cardSharp,
   },
   {
     title: "Transfer Statement",
-    url: "/menu/transfer",
+    url: "/menu/statement",
     iosIcon: bookSharp,
     mdIcon: bookSharp,
   },
