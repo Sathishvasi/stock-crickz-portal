@@ -1,0 +1,61 @@
+.settings {
+  .content {
+    font-weight: 700;
+    margin-top: 14px;
+    font-size: 18px;
+    color: #545454;
+  }
+  .sub-content {
+    color: gray;
+  }
+  .sc-ion-buttons-md-h {
+    font-size: 20px;
+    color: #545454;
+  }
+  &-content {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+  }
+  .act_border {
+    border: #4caf50 solid 1px;
+    text-align: center;
+    color: #4caf50;
+  }
+  .active {
+    color: #545454 !important;
+    border: #545454 solid 1px;
+    text-align: center;
+  }
+  ion-grid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .inactive {
+    color: #4caf50 !important;
+    border: #4caf50 solid 1px;
+    text-align: center;
+  }
+  .edit_button {
+    float: right;
+    width: 50%;
+    height: 70%;
+    margin-top: 5px;
+    --background: #2c4f58;
+    --color: #ffffff;
+  }
+  .card_class {
+    border: #2c4f58 solid 1px;
+    margin: 0 20px;
+    margin-bottom: 10px;
+    ul {
+      margin-bottom: 0;
+      padding-left: 20px;
+    }
+  }
+  ion-toggle {
+    height: 21px;
+    width: 40px;
+    --handle-background-checked: white;
+    --background: #f44336;
+  }
+}

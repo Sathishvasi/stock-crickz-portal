@@ -21,12 +21,12 @@ import {
   settingsSharp,
   logOutSharp,
   listCircleSharp,
-  playCircleSharp
+  playCircleSharp,
 } from "ionicons/icons";
 
 import { menuController } from "@ionic/core";
 
-import verticalLogo from '../../assets/logo-vertical.png';
+import verticalLogo from "../../assets/logo-vertical.png";
 
 interface AppPage {
   url: string;
@@ -99,11 +99,10 @@ const Menu: React.FC = () => {
 
   return (
     <IonMenu contentId="main" type="overlay" id="myMenu">
-
       <IonContent>
         <IonList id="labels-list">
           {/* <IonListHeader className="menu-header">Stock Crickz</IonListHeader> */}
-          <img className="menu-header" src={verticalLogo} alt="logo"/>
+          <img className="menu-header" src={verticalLogo} alt="logo" />
           {/* <IonNote>Bet your fav team</IonNote> */}
           <IonListHeader>
             <IonIcon
@@ -146,10 +145,14 @@ const Menu: React.FC = () => {
           })}
         </IonList>
 
-        <IonList>
+        <IonList id="additional-list">
           <IonMenuToggle autoHide={false}>
             <IonItem
-              className="settings"
+              className={
+                location.pathname === "/menu/settings"
+                  ? "selected settings"
+                  : "settings"
+              }
               routerLink="/menu/settings"
               routerDirection="none"
               lines="none"
