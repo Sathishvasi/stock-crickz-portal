@@ -18,12 +18,12 @@
   .MuiTableContainer-root {
     margin-bottom: 25px;
 
-    .team{
-        font-size: 16px;
-        color: black;
+    .team {
+      font-size: 16px;
+      color: black;
     }
-    .MuiTableCell-root{
-        padding: 10px !important;
+    .MuiTableCell-root {
+      padding: 10px !important;
     }
   }
   .back-section,
@@ -31,7 +31,7 @@
     border-bottom: 1px solid white;
     .point {
       margin: 0;
-      font-size: 15px;
+      font-size: 16px;
     }
   }
 
@@ -40,5 +40,114 @@
   }
   .lay-section {
     background-color: #fce4ea;
+  }
+}
+
+.betting-section {
+  .MuiDialog-paperWidthSm {
+    margin: 0;
+    max-width: 100%;
+    width: 90%;
+  }
+  .MuiDialogContent-root {
+    padding: 15px 5px;
+  }
+  ion-col {
+    padding: 0px 5px;
+
+    .header {
+      font-size: 10px;
+      ion-col {
+        padding: 0;
+      }
+    }
+    .max-input {
+      .native-input[disabled].sc-ion-input-md {
+        opacity: 1;
+      }
+      ion-col {
+        padding: 0;
+      }
+      input {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 12px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+    }
+    .adjust {
+      margin-top: 10px;
+
+      input {
+        margin: 0;
+        border-radius: 0px;
+        text-align: center;
+        font-size: 14px;
+      }
+      button {
+        width: 100%;
+        height: 100%;
+        background: #2d2d2d;
+        color: white;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .amount-selection {
+    margin-top: 20px;
+    button {
+      width: 100%;
+      padding: 8px 15px;
+      background: #22478a;
+      color: white;
+      border-radius: 5px;
+    }
+  }
+
+  .confirm-selection {
+    margin-top: 20px;
+    button {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #cccccc;
+    }
+    .cancel {
+    }
+    .submit {
+      background: #2d2d2d;
+      color: white;
+    }
+  }
+
+  .MuiBackdrop-root {
+    background-color: #000000d6;
+  }
+  .MuiDialogTitle-root {
+    padding: 10px 16px;
+    background-color: #22478a;
+    color: white;
+  }
+  .MuiIconButton-root {
+    padding: 6px;
+    color: white;
+  }
+
+  .profit {
+    margin-top: 25px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    p,
+    h5 {
+      margin: 0;
+    }
+    h5 {
+      font-weight: bold;
+      margin-left: 3px;
+    }
   }
 }

@@ -1,0 +1,30 @@
+.list_header{
+    --background: #22478a;
+    --color: white;
+    //--background: black;
+    //padding: 0px 7px;
+    // font-size : 0.8em !important;
+}
+.amount_align{
+	text-align: right;
+}
+.content{
+	font-weight: 700;
+    //margin-top: 14px;
+    // font-size: 18px;
+}
+.font_color{
+	--color: red !important;
+}
+.list-md{
+	padding-top : unset !important;
+	padding-bottom : 20px !important;
+	border-radius : 5px !important;
+}
+.font_size{
+    font-size: 0.8em !important;
+    margin-top: 1rem;
+    ion-grid{
+        padding: 0;
+    }
+}

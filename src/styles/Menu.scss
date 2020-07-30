@@ -114,11 +114,10 @@ ion-item.selected {
 }
 
 .menu-header {
-  font-size: 25px !important;
-  font-weight: bold;
   margin-bottom: 30px !important;
-  color: #3F51B5 !important;
-  padding: 0 35px;
+  margin: 0 auto;
+    display: block;
+  width: 75%;
 }
 
 .money-value{

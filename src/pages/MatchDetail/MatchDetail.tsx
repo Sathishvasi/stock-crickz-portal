@@ -7,6 +7,11 @@ import {
   IonTitle,
   IonToolbar,
   IonIcon,
+  IonGrid,
+  IonRow,
+  IonInput,
+  IonCol,
+  IonButton,
 } from "@ionic/react";
 import React from "react";
 import { menuController } from "@ionic/core";
@@ -98,13 +103,6 @@ const DialogContent = withStyles((theme: Theme) => ({
   },
 }))(MuiDialogContent);
 
-const DialogActions = withStyles((theme: Theme) => ({
-  root: {
-    margin: 0,
-    padding: theme.spacing(1),
-  },
-}))(MuiDialogActions);
-
 // Table
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -134,14 +132,88 @@ const MatchDetail: React.FC = () => {
     teamA: localStorage.getItem("teamA"),
     teamB: localStorage.getItem("teamB"),
     open: false,
+    odds: "",
+    finalBet: "",
+    stakeVal: "",
   });
 
-  const handleClickOpen = () => {
-    setState({ ...stateVal, open: true });
+  const handleClickOpen = (pointVal: any) => {
+    let pointValue;
+    if (pointVal.classList.value === "point") {
+      pointValue = pointVal.innerText;
+    } else if (
+      pointVal.classList &&
+      pointVal.classList[0] === "MuiTableCell-root"
+    ) {
+      pointValue = pointVal.childNodes[0].innerText;
+    } else {
+      pointValue = pointVal.previousSibling.innerText;
+    }
+
+    setState({
+      ...stateVal,
+      odds: pointValue,
+      open: true,
+      finalBet: pointValue,
+      stakeVal: "",
+    });
   };
 
   const handleClose = () => {
     setState({ ...stateVal, open: false });
+  };
+
+  const incrementOdds = () => {
+    const incrementedVal = parseInt(stateVal.odds) + 10;
+    setState({
+      ...stateVal,
+      odds: incrementedVal.toString(),
+      finalBet: (
+        incrementedVal +
+        (stateVal.stakeVal.length > 0 ? parseInt(stateVal.stakeVal) : 0)
+      ).toString(),
+    });
+  };
+
+  const decrementOdds = () => {
+    let decrementedVal = parseInt(stateVal.odds);
+    if (decrementedVal - 10 > 0) {
+      decrementedVal -= 10;
+    }
+    setState({
+      ...stateVal,
+      odds: decrementedVal.toString(),
+      finalBet: (
+        decrementedVal +
+        (stateVal.stakeVal.length > 0 ? parseInt(stateVal.stakeVal) : 0)
+      ).toString(),
+    });
+  };
+
+  const addProfit = (val: any) => {
+    let btnVal = val.target.innerText;
+    let finalBtnVal = parseInt(btnVal.substring(1, btnVal.length));
+    let finalStakeVal =
+      finalBtnVal +
+      (stateVal.stakeVal.length > 0 ? parseInt(stateVal.stakeVal) : 0);
+
+    setState({
+      ...stateVal,
+      stakeVal: finalStakeVal.toString(),
+      finalBet: (finalStakeVal + parseInt(stateVal.odds)).toString(),
+    });
+  };
+
+  const updateStake = (e: any) => {
+    let updatedVal = e.target.value;
+    setState({
+      ...stateVal,
+      stakeVal: updatedVal,
+      finalBet: (
+        (updatedVal.length > 0 ? parseInt(updatedVal) : 0) +
+        parseInt(stateVal.odds)
+      ).toString(),
+    });
   };
 
   const rows = [
@@ -185,7 +257,9 @@ const MatchDetail: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <Navbar />
+        <div className="inner-pages">
+          <Navbar />
+        </div>
       </IonHeader>
 
       <IonContent className="match-detail-wrapper">
@@ -195,18 +269,80 @@ const MatchDetail: React.FC = () => {
             onClose={handleClose}
             aria-labelledby="customized-dialog-title"
             open={stateVal.open}
+            className="betting-section"
           >
             <DialogTitle id="customized-dialog-title" onClose={handleClose}>
               Bet your point
             </DialogTitle>
             <DialogContent dividers>
-              <p>Betting content goes here</p>
+              <IonGrid>
+                <IonRow>
+                  <IonCol size="6">
+                    <IonRow className="header">
+                      <IonCol size="12">ODDS</IonCol>
+                    </IonRow>
+                    <IonRow className="max-input adjust">
+                      <IonCol size="3">
+                        <button className="decrement" onClick={decrementOdds}>
+                          -
+                        </button>
+                      </IonCol>
+                      <IonCol size="6">
+                        <IonInput
+                          type="number"
+                          value={stateVal.odds}
+                          disabled
+                        />
+                      </IonCol>
+                      <IonCol size="3">
+                        <button className="increment" onClick={incrementOdds}>
+                          +
+                        </button>
+                      </IonCol>
+                    </IonRow>
+                  </IonCol>
+                  <IonCol size="6">
+                    <IonRow className="header">
+                      <IonCol size="6">STAKE</IonCol>
+                      <IonCol size="6">Max: 500,0000</IonCol>
+                    </IonRow>
+                    <IonRow className="max-input">
+                      <IonInput
+                        type="number"
+                        placeholder="Max: 50,0000"
+                        value={stateVal.stakeVal}
+                        onIonInput={(e: any) => {
+                          updateStake(e);
+                        }}
+                      />
+                    </IonRow>
+                  </IonCol>
+                </IonRow>
+                <IonRow className="amount-selection">
+                  <IonCol size="4">
+                    <button onClick={(e: any) => addProfit(e)}>+500</button>
+                  </IonCol>
+                  <IonCol size="4">
+                    <button onClick={(e: any) => addProfit(e)}>+1000</button>
+                  </IonCol>
+                  <IonCol size="4">
+                    <button onClick={(e: any) => addProfit(e)}>+1500</button>
+                  </IonCol>
+                </IonRow>
+                <IonRow className="profit">
+                  <p>Profit:</p>
+                  <h5>{stateVal.finalBet}</h5>
+                </IonRow>
+                <IonRow className="confirm-selection">
+                  <IonCol size="6" onClick={handleClose}>
+                    <button className="cancel">Cancel</button>
+                  </IonCol>
+                  <IonCol size="6">
+                    <button className="submit">Place Bet</button>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
             </DialogContent>
-            <DialogActions>
-              <Button autoFocus onClick={handleClose} color="primary">
-                Save changes
-              </Button>
-            </DialogActions>
           </Dialog>
         </div>
 
@@ -238,7 +374,7 @@ const MatchDetail: React.FC = () => {
                     <StyledTableCell
                       align="center"
                       className="back-section"
-                      onClick={handleClickOpen}
+                      onClick={(e: any) => handleClickOpen(e.target)}
                     >
                       <p className="point">{row.back.point}</p>
                       <span>{row.back.amount}</span>
@@ -246,7 +382,7 @@ const MatchDetail: React.FC = () => {
                     <StyledTableCell
                       align="center"
                       className="lay-section"
-                      onClick={handleClickOpen}
+                      onClick={(e: any) => handleClickOpen(e.target)}
                     >
                       <p className="point">{row.lay.point}</p>
                       <span>{row.lay.amount}</span>
@@ -279,7 +415,7 @@ const MatchDetail: React.FC = () => {
                     <StyledTableCell
                       align="center"
                       className="back-section"
-                      onClick={handleClickOpen}
+                      onClick={(e: any) => handleClickOpen(e.target)}
                     >
                       <p className="point">{row.back.point}</p>
                       <span>{row.back.amount}</span>
@@ -287,7 +423,7 @@ const MatchDetail: React.FC = () => {
                     <StyledTableCell
                       align="center"
                       className="lay-section"
-                      onClick={handleClickOpen}
+                      onClick={(e: any) => handleClickOpen(e.target)}
                     >
                       <p className="point">{row.lay.point}</p>
                       <span>{row.lay.amount}</span>

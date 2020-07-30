@@ -125,12 +125,13 @@ const Login: React.FC = () => {
       typeof upwd === "string" ? (upwd.length === 0 ? false : true) : "";
 
     if (errorUn && errorPwd) {
-      func1(typeof errorUn === "boolean" && errorUn);
-      func2(typeof errorPwd === "boolean" && errorPwd);
       if (uname === "sathish" && upwd === "123") {
+        menuController.enable(true);
         history.push("/menu");
-        window.location.reload();
+        // window.location.reload();
       } else {
+        func1(typeof errorUn === "boolean" && errorUn);
+        func2(typeof errorPwd === "boolean" && errorPwd);
         setOpen(true);
         setTimeout(() => {
           setOpen(false);
@@ -139,6 +140,16 @@ const Login: React.FC = () => {
     } else {
       func1(!errorUn);
       func2(!errorPwd);
+    }
+  };
+
+  const check = (val: any) => {
+    if (val.value.length > 0) {
+      if (val.name === "username") {
+        func1(false);
+      } else if (val.name === "password") {
+        func2(false);
+      }
     }
   };
 
@@ -173,6 +184,7 @@ const Login: React.FC = () => {
                   },
                 }}
                 inputProps={{ style: { color: "white" }, ref: un }}
+                onChange={(e: any) => check(e.target)}
               />
               <TextField
                 variant="outlined"
@@ -191,6 +203,7 @@ const Login: React.FC = () => {
                   },
                 }}
                 inputProps={{ style: { color: "white" }, ref: pwd }}
+                onChange={(e: any) => check(e.target)}
               />
               {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

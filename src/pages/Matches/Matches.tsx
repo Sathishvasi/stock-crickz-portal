@@ -35,7 +35,7 @@ function mapDispatchToProps(dispatch: any) {
 }
 
 const Matches: React.FC = () => {
-  menuController.enable(true);
+  // menuController.enable(true);
   const [stateVal, setState] = useState({
     matchCount: 2,
   });

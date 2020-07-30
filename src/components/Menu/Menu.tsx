@@ -60,12 +60,12 @@ const appPages: AppPage[] = [
     iosIcon: bookSharp,
     mdIcon: bookSharp,
   },
-  {
-    title: "Time Setting",
-    url: "/menu/time",
-    iosIcon: timeSharp,
-    mdIcon: timeSharp,
-  },
+  // {
+  //   title: "Time Setting",
+  //   url: "/menu/time",
+  //   iosIcon: timeSharp,
+  //   mdIcon: timeSharp,
+  // },
   {
     title: "Change Password",
     url: "/menu/password",

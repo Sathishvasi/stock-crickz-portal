@@ -10,6 +10,7 @@ import {
   IonContent,
   IonHeader,
   IonMenuButton,
+  IonBackButton,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -19,9 +20,7 @@ import verticalLogo from "../../assets/logo-name.png";
 import { personSharp, menuSharp } from "ionicons/icons";
 import { connect } from "react-redux";
 import state from "../../store";
-
-import "../../styles/appStyles.scss";
-
+import { menuController } from "@ionic/core";
 
 function mapStateToProps(state: any) {
   return state;
@@ -32,9 +31,6 @@ function mapDispatchToProps(dispatch: any) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  navRoot: {
-    flexGrow: 1,
-  },
   menuButton: {
     marginRight: theme.spacing(1),
   },
@@ -44,16 +40,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar: React.FC = () => {
-  const classes = useStyles();
+  menuController.enable(true);
+
   const balance = state.getState().availableBalance;
 
   return (
     <IonHeader>
-    <div className={classes.navRoot}>
+    <div className='navRoot'>
       <AppBar position="static">
         <Toolbar>
           <IonButtons slot="start">
             <IonMenuButton />
+            <IonBackButton />
           </IonButtons>
           <div className="logo-name">
             <h3>Stock Crickz</h3>
