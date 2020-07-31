@@ -21,6 +21,8 @@ import Password from "./pages/Password/Password";
 import Statement from "./pages/Statement/Statement";
 import MatchDetail from "./pages/MatchDetail/MatchDetail";
 import Settings from "./pages/Settings/Settings";
+import BettingPLDetail from "./pages/BettingPLDetail/BettingPLDEtail";
+
 
 import Menu from "./components/Menu/Menu";
 import Navbar from "./components/Navbar/Navbar";
@@ -60,6 +62,8 @@ const App: React.FC = () => (
             <Route path="/menu/password" component={Password} exact />
             <Route path="/menu/settings" component={Settings} exact />
             <Route path="/login" component={Login} exact={true} />
+            <Route path="/menu/bettingpl-detail" component={BettingPLDetail} exact />
+
             {/* <Route path="/menu" component={MenuItems} exact={true} /> */}
             <Route
               path="/"

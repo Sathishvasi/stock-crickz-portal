@@ -196,8 +196,8 @@ const Settings: React.FC = () => {
                 </IonRow>
               </IonGrid>
             </IonItem>
-            <IonItem lines="none" disabled={!checked}>
-              <IonButton slot="end" class="edit_button" onClick={buttonClick1}>
+            <IonItem lines="none">
+              <IonButton slot="end" disabled={!checked} class="edit_button" onClick={buttonClick1}>
                 {button1}
               </IonButton>
             </IonItem>

@@ -1,0 +1,81 @@
+.bettingpl-detail {
+    padding: 0 10px !important;
+    h4 {
+        padding-left: 6px;
+    }
+    ion-grid {
+        border-bottom: 1px solid #c3c3c3;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 13px;
+        color: #636363;
+        b {
+            color: #484848;
+        }
+        ion-col {
+            padding: 0 !important;
+        }
+    }
+    ion-item:not(.list_header) {
+        margin-top: 10px;
+        &:last-child ion-grid {
+            border-bottom: none;
+        }
+        .bet-details {
+            p {
+                margin: 0;
+                font-weight: bold;
+                color: #007ab1;
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+            span {
+                display: block;
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .status {
+            text-align: right;
+            ion-row {
+                margin-bottom: 5px;
+            }
+            ion-col {
+                font-weight: bold;
+                &.LOST {
+                    color: #f44336;
+                }
+                &.WON {
+                    color: #4caf50;
+                }
+            }
+        }
+        .additional {
+            margin: 15px 0 10px 0;
+        }
+    }
+    .total-tally {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        .details {
+            display: flex;
+            color: #484848;
+            justify-content: space-between;
+            .headers {
+                font-weight: bold;
+            }
+        }
+        .total {
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+    }
+}
