@@ -126,9 +126,8 @@ const Login: React.FC = () => {
 
     if (errorUn && errorPwd) {
       if (uname === "sathish" && upwd === "123") {
-        menuController.enable(true);
         history.push("/menu");
-        // window.location.reload();
+        window.location.reload();
       } else {
         func1(typeof errorUn === "boolean" && errorUn);
         func2(typeof errorPwd === "boolean" && errorPwd);
@@ -185,6 +184,7 @@ const Login: React.FC = () => {
                 }}
                 inputProps={{ style: { color: "white" }, ref: un }}
                 onChange={(e: any) => check(e.target)}
+                onKeyDown={(e:any) => (e.keyCode === 13 ? checkValidation() : '')}
               />
               <TextField
                 variant="outlined"
@@ -204,6 +204,7 @@ const Login: React.FC = () => {
                 }}
                 inputProps={{ style: { color: "white" }, ref: pwd }}
                 onChange={(e: any) => check(e.target)}
+                onKeyDown={(e:any) => (e.keyCode === 13 ? checkValidation() : '')}
               />
               {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

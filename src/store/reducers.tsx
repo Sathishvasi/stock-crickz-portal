@@ -1,7 +1,8 @@
 const initialState = {
   demo: "sathish",
   availableBalance: 5000,
-  matchHeading: ''
+  matchHeading: "",
+  backBtn: ""
 };
 
 function rootReducer(state = initialState, action: any) {
@@ -12,10 +13,10 @@ function rootReducer(state = initialState, action: any) {
         demo: action.value,
       };
     case "SET_MATCHNAME":
-      return{
+      return {
         ...state,
-        matchHeading: action.value
-      }
+        matchHeading: action.value,
+      };
     default:
       return state;
   }

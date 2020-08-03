@@ -95,7 +95,8 @@ const labels = [
 
 const Menu: React.FC = () => {
   const location = useLocation();
-  // menuController.close();
+  menuController.close();
+  menuController.enable(true);
 
   return (
     <IonMenu contentId="main" type="overlay" id="myMenu">

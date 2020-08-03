@@ -269,7 +269,7 @@ const MatchDetail: React.FC = () => {
             onClose={handleClose}
             aria-labelledby="customized-dialog-title"
             open={stateVal.open}
-            className="betting-section"
+            // className="betting-section"
           >
             <DialogTitle id="customized-dialog-title" onClose={handleClose}>
               Bet your point

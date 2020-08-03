@@ -20,7 +20,7 @@ import { useEffect, useState, useRef } from "react";
 
 const BettingPL: React.FC = () => {
   const [state, setState] = useState({
-    matchHeader: "CSK vs MI",
+    matchHeader: localStorage.getItem('teamName'),
   });
   const plData = [
     {

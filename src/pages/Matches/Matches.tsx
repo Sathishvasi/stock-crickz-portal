@@ -25,6 +25,8 @@ import { useEffect, useState, useRef } from "react";
 // Redux
 import { connect } from "react-redux";
 import state from "../../store";
+import "../../styles/appStyles.scss";
+
 
 function mapStateToProps(state: any) {
   return state;
@@ -47,6 +49,8 @@ const Matches: React.FC = () => {
     localStorage.setItem("teamA", teamA);
     localStorage.setItem("teamB", teamB);
     console.log(val, teamA, teamB);
+
+    // state.dispatch({ type: "SET_BACKBTN", value: "/menu" });
   };
 
   return (

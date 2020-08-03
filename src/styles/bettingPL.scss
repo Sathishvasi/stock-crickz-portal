@@ -1,0 +1,55 @@
+.Bettingpl {
+    .font {
+        font-size: 13px;
+        .right {
+            text-align: right;
+        }
+    }
+    .list_header {
+        --background: #22478a;
+        --color: white;
+        //font-size: 13px;
+    }
+    .list-md {
+        border-radius: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .MuiContainer-root {
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+    ion-col {
+        padding: 5px 0px;
+    }
+    .loss_color {
+        --color: #f44336 !important;
+        margin-top: 5px;
+    }
+    .team_Color {
+        --color: #007ab1 !important;
+    }
+    .align {
+        text-align: right !important;
+        display: inherit;
+        margin-top: 5px;
+    }
+    .netwin_align {
+        color: #f44336 !important;
+    }
+    .win_color {
+        --color: #4caf50 !important;
+        margin-top: 5px;
+    }
+    .loss_color,
+    .win_color {
+        font-weight: bold;
+    }
+    .match-details {
+        ion-grid {
+            padding: 10px 0;
+        }
+    }
+    ion-item:not(:last-child):not(:first-child) ion-grid {
+        border-bottom: 1px solid #c3c3c3;
+    }
+}

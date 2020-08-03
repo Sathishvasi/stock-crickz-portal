@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";  
+import IconButton from "@material-ui/core/IconButton";
 import {
   IonButtons,
   IonContent,
@@ -42,27 +42,30 @@ const useStyles = makeStyles((theme) => ({
 const Navbar: React.FC = () => {
   menuController.enable(true);
 
+  const [states, setState] = useState("");
+
   const balance = state.getState().availableBalance;
+
 
   return (
     <IonHeader>
-    <div className='navRoot'>
-      <AppBar position="static">
-        <Toolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-            <IonBackButton />
-          </IonButtons>
-          <div className="logo-name">
-            <h3>Stock Crickz</h3>
-          </div>
-          <div className="balance" color="inherit">
-            <IonIcon slot="start" ios={personSharp} md={personSharp} />
-            <p>{balance}</p>
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
+      <div className="navRoot">
+        <AppBar position="static">
+          <Toolbar>
+            <IonButtons slot="start">
+              <IonMenuButton />
+              <IonBackButton defaultHref="/menu" />
+            </IonButtons>
+            <div className="logo-name">
+              <h3>Stock Crickz</h3>
+            </div>
+            <div className="balance" color="inherit">
+              <IonIcon slot="start" ios={personSharp} md={personSharp} />
+              <p>{balance}</p>
+            </div>
+          </Toolbar>
+        </AppBar>
+      </div>
     </IonHeader>
   );
 };
