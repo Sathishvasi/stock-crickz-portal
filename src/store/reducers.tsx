@@ -2,7 +2,8 @@ const initialState = {
   demo: "sathish",
   availableBalance: 5000,
   matchHeading: "",
-  backBtn: ""
+  backBtn: "",
+  apiBase: "http://criczz.us-east-2.elasticbeanstalk.com/"
 };
 
 function rootReducer(state = initialState, action: any) {

@@ -135,7 +135,10 @@ const MatchDetail: React.FC = () => {
     odds: "",
     finalBet: "",
     stakeVal: "",
+    suspended: localStorage.getItem("status") === "SUSPENDED" ? true : false,
   });
+
+  console.log(stateVal.suspended);
 
   const handleClickOpen = (pointVal: any) => {
     let pointValue;
@@ -351,86 +354,144 @@ const MatchDetail: React.FC = () => {
           <p>{stateVal.matchHeading}</p>
           <span>21/04/2020 06:30</span>
         </div>
+
+        {/* Content */}
         <div className="match-detail">
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>Match Odds</StyledTableCell>
-                  <StyledTableCell align="center">BACK</StyledTableCell>
-                  <StyledTableCell align="center">LAY</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row, index) => (
-                  <TableRow key={index}>
-                    <StyledTableCell
-                      className="team"
-                      component="th"
-                      scope="row"
-                    >
-                      {row.header}
-                    </StyledTableCell>
-                    <StyledTableCell
-                      align="center"
-                      className="back-section"
-                      onClick={(e: any) => handleClickOpen(e.target)}
-                    >
-                      <p className="point">{row.back.point}</p>
-                      <span>{row.back.amount}</span>
-                    </StyledTableCell>
-                    <StyledTableCell
-                      align="center"
-                      className="lay-section"
-                      onClick={(e: any) => handleClickOpen(e.target)}
-                    >
-                      <p className="point">{row.lay.point}</p>
-                      <span>{row.lay.amount}</span>
+              {stateVal.suspended ? (
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Match Odds</StyledTableCell>
+                    <StyledTableCell align="center">
+                      <span className="supspend-head">BACK</span>
+                      <span className="supspend-head">LAY</span>
                     </StyledTableCell>
                   </TableRow>
-                ))}
-              </TableBody>
+                </TableHead>
+              ) : (
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Match Odds</StyledTableCell>
+                    <StyledTableCell align="center">BACK</StyledTableCell>
+                    <StyledTableCell align="center">LAY</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+              )}
+
+              {rows.map((row, index) => (
+                <TableBody>
+                  {stateVal.suspended ? (
+                    <TableRow key={index}>
+                      <StyledTableCell
+                        className="team"
+                        component="th"
+                        scope="row"
+                      >
+                        {row.header}
+                      </StyledTableCell>
+                      <StyledTableCell align="center" className="back-section">
+                        <p className="suspend-text">SUSPENDED</p>
+                      </StyledTableCell>
+                    </TableRow>
+                  ) : (
+                    <TableRow key={index}>
+                      <StyledTableCell
+                        className="team"
+                        component="th"
+                        scope="row"
+                      >
+                        {row.header}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        align="center"
+                        className="back-section"
+                        onClick={(e: any) => handleClickOpen(e.target)}
+                      >
+                        <p className="point">{row.back.point}</p>
+                        <span>{row.back.amount}</span>
+                      </StyledTableCell>
+                      <StyledTableCell
+                        align="center"
+                        className="lay-section"
+                        onClick={(e: any) => handleClickOpen(e.target)}
+                      >
+                        <p className="point">{row.lay.point}</p>
+                        <span>{row.lay.amount}</span>
+                      </StyledTableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              ))}
             </Table>
           </TableContainer>
 
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>Bookmaker</StyledTableCell>
-                  <StyledTableCell align="center">BACK</StyledTableCell>
-                  <StyledTableCell align="center">LAY</StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {row2.map((row, index) => (
-                  <TableRow key={index}>
-                    <StyledTableCell
-                      className="team"
-                      component="th"
-                      scope="row"
-                    >
-                      {row.header}
-                    </StyledTableCell>
-                    <StyledTableCell
-                      align="center"
-                      className="back-section"
-                      onClick={(e: any) => handleClickOpen(e.target)}
-                    >
-                      <p className="point">{row.back.point}</p>
-                      <span>{row.back.amount}</span>
-                    </StyledTableCell>
-                    <StyledTableCell
-                      align="center"
-                      className="lay-section"
-                      onClick={(e: any) => handleClickOpen(e.target)}
-                    >
-                      <p className="point">{row.lay.point}</p>
-                      <span>{row.lay.amount}</span>
+              {stateVal.suspended ? (
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Bookmaker</StyledTableCell>
+                    <StyledTableCell align="center">
+                      <span className="supspend-head">BACK</span>
+                      <span className="supspend-head">LAY</span>
                     </StyledTableCell>
                   </TableRow>
-                ))}
-              </TableBody>
+                </TableHead>
+              ) : (
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Bookmaker</StyledTableCell>
+                    <StyledTableCell align="center">BACK</StyledTableCell>
+                    <StyledTableCell align="center">LAY</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+              )}
+
+              {rows.map((row, index) => (
+                <TableBody>
+                  {stateVal.suspended ? (
+                    <TableRow key={index}>
+                      <StyledTableCell
+                        className="team"
+                        component="th"
+                        scope="row"
+                      >
+                        {row.header}
+                      </StyledTableCell>
+                      <StyledTableCell align="center" className="back-section">
+                        <p className="suspend-text">SUSPENDED</p>
+                      </StyledTableCell>
+                    </TableRow>
+                  ) : (
+                    <TableRow key={index}>
+                      <StyledTableCell
+                        className="team"
+                        component="th"
+                        scope="row"
+                      >
+                        {row.header}
+                      </StyledTableCell>
+                      <StyledTableCell
+                        align="center"
+                        className="back-section"
+                        onClick={(e: any) => handleClickOpen(e.target)}
+                      >
+                        <p className="point">{row.back.point}</p>
+                        <span>{row.back.amount}</span>
+                      </StyledTableCell>
+                      <StyledTableCell
+                        align="center"
+                        className="lay-section"
+                        onClick={(e: any) => handleClickOpen(e.target)}
+                      >
+                        <p className="point">{row.lay.point}</p>
+                        <span>{row.lay.amount}</span>
+                      </StyledTableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              ))}
             </Table>
           </TableContainer>
         </div>
