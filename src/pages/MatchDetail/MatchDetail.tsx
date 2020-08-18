@@ -280,34 +280,34 @@ const MatchDetail: React.FC = () => {
             <DialogContent dividers>
               <IonGrid>
                 <IonRow>
-                  <IonCol size="6">
+                  <IonCol>
                     <IonRow className="header">
-                      <IonCol size="12">ODDS</IonCol>
+                      <IonCol>ODDS</IonCol>
                     </IonRow>
                     <IonRow className="max-input adjust">
-                      <IonCol size="3">
+                      <IonCol>
                         <button className="decrement" onClick={decrementOdds}>
                           -
                         </button>
                       </IonCol>
-                      <IonCol size="6">
+                      <IonCol>
                         <IonInput
                           type="number"
                           value={stateVal.odds}
                           disabled
                         />
                       </IonCol>
-                      <IonCol size="3">
+                      <IonCol>
                         <button className="increment" onClick={incrementOdds}>
                           +
                         </button>
                       </IonCol>
                     </IonRow>
                   </IonCol>
-                  <IonCol size="6">
+                  <IonCol>
                     <IonRow className="header">
-                      <IonCol size="6">STAKE</IonCol>
-                      <IonCol size="6">Max: 500,0000</IonCol>
+                      <IonCol>STAKE</IonCol>
+                      <IonCol>Max: 500,0000</IonCol>
                     </IonRow>
                     <IonRow className="max-input">
                       <IonInput
@@ -322,13 +322,13 @@ const MatchDetail: React.FC = () => {
                   </IonCol>
                 </IonRow>
                 <IonRow className="amount-selection">
-                  <IonCol size="4">
+                  <IonCol>
                     <button onClick={(e: any) => addProfit(e)}>+500</button>
                   </IonCol>
-                  <IonCol size="4">
+                  <IonCol>
                     <button onClick={(e: any) => addProfit(e)}>+1000</button>
                   </IonCol>
-                  <IonCol size="4">
+                  <IonCol>
                     <button onClick={(e: any) => addProfit(e)}>+1500</button>
                   </IonCol>
                 </IonRow>
@@ -337,10 +337,10 @@ const MatchDetail: React.FC = () => {
                   <h5>{stateVal.finalBet}</h5>
                 </IonRow>
                 <IonRow className="confirm-selection">
-                  <IonCol size="6" onClick={handleClose}>
+                  <IonCol onClick={handleClose}>
                     <button className="cancel">Cancel</button>
                   </IonCol>
-                  <IonCol size="6">
+                  <IonCol>
                     <button className="submit">Place Bet</button>
                   </IonCol>
                 </IonRow>
@@ -380,7 +380,7 @@ const MatchDetail: React.FC = () => {
               )}
 
               {rows.map((row, index) => (
-                <TableBody>
+                <TableBody key={index}>
                   {stateVal.suspended ? (
                     <TableRow key={index}>
                       <StyledTableCell
@@ -449,7 +449,7 @@ const MatchDetail: React.FC = () => {
               )}
 
               {rows.map((row, index) => (
-                <TableBody>
+                <TableBody key={index}>
                   {stateVal.suspended ? (
                     <TableRow key={index}>
                       <StyledTableCell

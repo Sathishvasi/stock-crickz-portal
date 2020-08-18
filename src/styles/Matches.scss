@@ -1,40 +1,46 @@
 .match-wrapper {
-  margin-top: 2rem;
-  .card-content-md{
-    padding-top: 16px !important;
-    padding-bottom: 16px !important;
-  }
-  .live{
-    color: #3c8a3f;
-  }
-  .header {
-    font-size: 20px;
-    display: flex;
-    font-weight: bold;
-    margin-bottom: 20px;
-    label {
-      margin-left: 5px;
-      line-height: 26px;
+    margin-top: 2rem;
+    .card-content-md {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
     }
-    .play-icon {
-      font-size: 24px;
-    }
-  }
-
-  .matches {
-    ion-card-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .matches-name{
-          font-size: 16px;
-      }
-
-      .play-icon-small {
+    .live {
         color: #3c8a3f;
-        font-size: 20px;
-      }
     }
-  }
+    .header {
+        font-size: 20px;
+        display: flex;
+        font-weight: bold;
+        margin-bottom: 20px;
+        label {
+            margin-left: 5px;
+            line-height: 26px;
+        }
+        .play-icon {
+            font-size: 24px;
+        }
+    }
+    .matches {
+        ion-card-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .matches-name {
+                font-size: 16px;
+            }
+            .play-icon-small {
+                color: #3c8a3f;
+                font-size: 20px;
+            }
+        }
+        .no-matches {
+            text-align: center;
+            img {
+                width: 175px;
+            }
+            p {
+                font-size: 18px;
+            }
+        }
+    }
 }

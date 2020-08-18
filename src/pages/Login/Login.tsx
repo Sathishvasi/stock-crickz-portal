@@ -28,6 +28,8 @@ import { menuController } from "@ionic/core";
 
 import { connect } from "react-redux";
 import state from "../../store";
+import axios from "axios";
+
 
 function Copyright() {
   return (
@@ -81,6 +83,8 @@ function mapDispatchToProps(dispatch: any) {
   return dispatch({ type: "", value: "" });
 }
 
+const API_ROOT = state.getState().apiBase;
+
 const Login: React.FC = () => {
   let activeTestUrl = state.getState().demo;
   console.log(activeTestUrl);
@@ -110,6 +114,29 @@ const Login: React.FC = () => {
   const [showpwderr, func2] = useState(false);
 
   const [open, setOpen] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState('');
+
+
+    // Live Matches API call
+  const checkLogin = (un: any, pwd: any) => {
+    return axios({
+      url: API_ROOT + "/login",
+      method: "POST",
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+      data: {
+        userName:un,
+        password:pwd
+      }
+    }).then((response) => {
+      return response;
+    }).catch((err)=>{
+      return err;
+    });
+  };
+
 
   const checkValidation = () => {
     state.dispatch({ type: "SET_VAL", value: "kumar" });
@@ -125,21 +152,48 @@ const Login: React.FC = () => {
       typeof upwd === "string" ? (upwd.length === 0 ? false : true) : "";
 
     if (errorUn && errorPwd) {
-      if (uname === "sathish" && upwd === "123") {
-        history.push("/menu");
-        window.location.reload();
-      } else {
-        func1(typeof errorUn === "boolean" && errorUn);
-        func2(typeof errorPwd === "boolean" && errorPwd);
-        setOpen(true);
-        setTimeout(() => {
-          setOpen(false);
-        }, 2000);
-      }
-    } else {
+      checkLogin(uname, upwd).then((res: any) => {
+        console.log(res);
+        if(res.data){
+          const status = res.data.desc;
+          if(status === 'SUCCESS'){
+            localStorage.setItem('userToken', res.data.data);
+            history.push("/menu");
+          }else{
+            setOpen(true);
+            setSnackbarMsg(status);
+            setTimeout(() => {
+              setOpen(false);
+            }, 2000);
+          }
+        }else{
+          setOpen(true);
+          setSnackbarMsg("Server Error");
+          setTimeout(() => {
+            setOpen(false);
+          }, 2000);
+        }
+      })
+    }else {
       func1(!errorUn);
       func2(!errorPwd);
     }
+    // if (errorUn && errorPwd) {
+    //   if (uname === "sathish" && upwd === "123") {
+    //     history.push("/menu");
+    //     // window.location.reload();
+    //   } else {
+    //     func1(typeof errorUn === "boolean" && errorUn);
+    //     func2(typeof errorPwd === "boolean" && errorPwd);
+    //     setOpen(true);
+    //     setTimeout(() => {
+    //       setOpen(false);
+    //     }, 2000);
+    //   }
+    // } else {
+    //   func1(!errorUn);
+    //   func2(!errorPwd);
+    // }
   };
 
   const check = (val: any) => {
@@ -240,7 +294,7 @@ const Login: React.FC = () => {
               horizontal: "center",
             }}
             open={open}
-            message="Invalid credentials"
+            message={snackbarMsg}
           ></Snackbar>
         </Container>
       </IonContent>

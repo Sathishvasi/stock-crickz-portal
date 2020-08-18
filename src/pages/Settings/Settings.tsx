@@ -166,7 +166,7 @@ const Settings: React.FC = () => {
             <IonItem lines="none">
               <IonGrid>
                 <IonRow>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputOne}
                       readonly={actedit1}
@@ -175,7 +175,7 @@ const Settings: React.FC = () => {
                       onIonInput={(e: any) => setNumber1(e.target.value)}
                     ></IonInput>
                   </IonCol>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputOne}
                       readonly={actedit1}
@@ -184,7 +184,7 @@ const Settings: React.FC = () => {
                       onIonInput={(e: any) => setNumber2(e.target.value)}
                     ></IonInput>
                   </IonCol>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputOne}
                       readonly={actedit1}
@@ -207,7 +207,7 @@ const Settings: React.FC = () => {
             <IonItem lines="none">
               <IonGrid>
                 <IonRow>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputTwo}
                       readonly={actedit2}
@@ -216,7 +216,7 @@ const Settings: React.FC = () => {
                       onIonInput={(e: any) => setEditstake1(e.target.value)}
                     ></IonInput>
                   </IonCol>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputTwo}
                       readonly={actedit2}
@@ -225,7 +225,7 @@ const Settings: React.FC = () => {
                       onIonInput={(e: any) => setEditstake2(e.target.value)}
                     ></IonInput>
                   </IonCol>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputTwo}
                       readonly={actedit2}
@@ -249,7 +249,7 @@ const Settings: React.FC = () => {
             <IonItem lines="none">
               <IonGrid>
                 <IonRow>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputThree}
                       readonly={actedit3}
@@ -260,7 +260,7 @@ const Settings: React.FC = () => {
                       }
                     ></IonInput>
                   </IonCol>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputThree}
                       readonly={actedit3}
@@ -271,7 +271,7 @@ const Settings: React.FC = () => {
                       }
                     ></IonInput>
                   </IonCol>
-                  <IonCol size="4">
+                  <IonCol>
                     <IonInput
                       className={inputThree}
                       readonly={actedit3}

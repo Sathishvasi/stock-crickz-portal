@@ -19,9 +19,11 @@ import {
   IonItem,
   IonLabel,
   IonButton,
+  IonLoading,
 } from "@ionic/react";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import noResults from "../../assets/no-results.svg";
 
 // Redux
 import { connect } from "react-redux";
@@ -39,17 +41,19 @@ function mapDispatchToProps(dispatch: any) {
 const API_ROOT = state.getState().apiBase;
 
 const Matches: React.FC = () => {
-  // menuController.enable(true);
+  menuController.enable(true);
   const [stateVal, setState] = useState({
     matchCount: 2,
+    noMatch: false
   });
   const [liveMatches, setMatches] = useState([]);
 
+  const [showLoading, setShowLoading] = useState(true);
 
   // Live Matches API call
   const getliveMatches = () => {
     return axios({
-      url: API_ROOT + "criczz/matches",
+      url: API_ROOT + "/matches",
       method: "GET",
     }).then((response) => {
       // Filter teams
@@ -65,16 +69,26 @@ const Matches: React.FC = () => {
 
   useEffect(() => {
     getliveMatches().then((data: any) => {
+      setShowLoading(false);
+      console.log(data)
+      if(!data.length){
+        setState({...stateVal,noMatch: true});
+      }
       return setMatches(data);
     });
   }, []);
 
-  console.log(liveMatches);
+  // console.log(liveMatches);
 
-  const setMatchDetail = (val: string, teamA: string, teamB: string, status: string) => {
+  const setMatchDetail = (
+    val: string,
+    teamA: string,
+    teamB: string,
+    status: string
+  ) => {
     // redux ref
     state.dispatch({ type: "SET_MATCHNAME", value: val });
-    
+
     localStorage.setItem("matchHeader", val);
     localStorage.setItem("teamA", teamA);
     localStorage.setItem("teamB", teamB);
@@ -112,7 +126,12 @@ const Matches: React.FC = () => {
                         routerLink="/menu/details"
                         onClick={() =>
                           setMatchDetail(
-                            team.teamA+" vs "+team.teamB+" ("+team.leagueName+")",
+                            team.teamA +
+                              " vs " +
+                              team.teamB +
+                              " (" +
+                              team.leagueName +
+                              ")",
                             team.teamA,
                             team.teamB,
                             team.status
@@ -134,6 +153,12 @@ const Matches: React.FC = () => {
                     </div>
                   );
                 })}
+                {stateVal.noMatch &&
+                <div className="no-matches" >
+                  <img src={noResults} alt="No results"/>
+                  <p>No Matches Found</p>
+                </div>
+                }
             </div>
           </div>
           {/* Competitions */}
@@ -160,6 +185,15 @@ const Matches: React.FC = () => {
             </div>
           </div>
         </Container>
+
+        {/* Loader */}
+        <IonLoading
+          cssClass="my-custom-class"
+          isOpen={showLoading}
+          onDidDismiss={() => setShowLoading(false)}
+          message={"Please wait..."}
+          duration={5000}
+        />
       </IonContent>
     </IonPage>
   );

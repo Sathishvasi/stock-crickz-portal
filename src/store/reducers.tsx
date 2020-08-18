@@ -3,7 +3,7 @@ const initialState = {
   availableBalance: 5000,
   matchHeading: "",
   backBtn: "",
-  apiBase: "http://criczz.us-east-2.elasticbeanstalk.com/"
+  apiBase: "http://criczz.us-east-2.elasticbeanstalk.com/criczz"
 };
 
 function rootReducer(state = initialState, action: any) {
